@@ -3,6 +3,7 @@
 const nconf = require('nconf');
 const fs = require('fs');
 const request = require('request');
+const util = require('util');
 
 // First consider commandline arguments and environment variables, respectively.
 nconf.argv().env();
@@ -94,6 +95,7 @@ function sendMQTTSensorOfflineStatus(sensor, isOffline) {
 
 // send sensor info via MQTT
 function sendMQTT(sensor) {
+  console.log(util.inspect(myObject, false, null, true /* enable colors */))
   const mqttHome = nconf.get('mqtt_home');
   if(!mqttHome) {
     return;
@@ -103,9 +105,9 @@ function sendMQTT(sensor) {
   json.offline = false
   const sensorName = nconf.get('sensors:'+sensor.ID)
   if(sensorName)
-    console.log(sensorName, mqttHome+sensor.ID+'/json', JSON.stringify(json))
+    console.log('a: '+sensorName, mqttHome+sensor.ID+'/json', JSON.stringify(json))
   else
-    console.log(sensorName, mqttHome+sensor.ID+'/json', JSON.stringify(json))
+    console.log('b:' + sensorName, mqttHome+sensor.ID+'/json', JSON.stringify(json))
 
   mqttClient.publish(mqttHome + sensor.ID + '/json', JSON.stringify(json));
 /*    if(sensor.sensorType == 0x08) {
