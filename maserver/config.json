@@ -1,5 +1,5 @@
 {
-  "localIPv4Address": null,
+  "localIPv4Address": "192.168.1.14",
   "mqtt": "mqtt://192.168.1.14",
   "mqtt_home": "MobileAlerts/",
 
