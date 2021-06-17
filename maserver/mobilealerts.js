@@ -96,7 +96,7 @@ function sendMQTTSensorOfflineStatus(sensor, isOffline) {
 // send sensor info via MQTT
 function sendMQTT(sensor) {
   /* test */
-  console.log(util.inspect(myObject, false, null, true /* enable colors */))
+  //console.log(util.inspect(myObject, false, null, true /* enable colors */))
   const mqttHome = nconf.get('mqtt_home');
   if(!mqttHome) {
     return;
